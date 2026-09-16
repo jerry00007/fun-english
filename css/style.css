@@ -249,15 +249,31 @@ img{height:1em;width:1em;object-fit:contain;vertical-align:middle}  /* 全局 1e
 .course-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:0 4vw 3vh}
 .course-card{
   background:linear-gradient(180deg,#fff,#FFF9EC);border-radius:30px;border:4px solid var(--ink85);cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vh;
+  display:flex;flex-direction:column;align-items:stretch;
   box-shadow:0 8px 0 var(--macaron),var(--hi-top),inset 0 -3px 0 rgba(0,0,0,.06);
   transition:var(--press);animation:cardIn .6s backwards;
-  padding:2.4vh 2vw;text-align:center;color:var(--ink);min-height:190px;
+  padding:0;text-align:center;color:var(--ink);min-height:196px;overflow:hidden;
 }
 .course-card:active{transform:translateY(4px) scale(.97);box-shadow:0 3px 0 var(--macaron),var(--hi-top),inset 0 -3px 0 rgba(0,0,0,.06)}
 @media(hover:hover){
   .course-card:hover{transform:translateY(-4px);box-shadow:0 12px 0 var(--macaron),0 16px 28px rgba(61,52,80,.14),var(--hi-top),inset 0 -3px 0 rgba(0,0,0,.06)}
   .course-card:hover .cc-emoji{animation:emojiSway .8s ease-in-out}
+}
+.cc-cover{
+  height:clamp(92px,13.5vh,128px);flex-shrink:0;position:relative;
+  background-size:cover;background-position:center;border-radius:25px 25px 0 0;
+}
+.cc-cover .cc-emoji{
+  position:absolute;right:10px;bottom:-20px;width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;line-height:1;
+  background:linear-gradient(180deg,#fff,#FFF9EC);border:3px solid var(--ink85);border-radius:50%;
+  box-shadow:0 4px 0 var(--macaron),inset 0 2px 0 rgba(255,255,255,.6);
+  filter:none;animation:emojiFloat 3.6s ease-in-out infinite;
+}
+.cc-body{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7vh;
+  padding:2.6vh 2vw 1.8vh;
 }
 .cc-emoji{
   font-size:clamp(56px,12vw,90px);line-height:1.15;filter:drop-shadow(0 6px 6px rgba(0,0,0,.12));
@@ -626,6 +642,11 @@ img{height:1em;width:1em;object-fit:contain;vertical-align:middle}  /* 全局 1e
   content:"";position:absolute;inset:-30%;z-index:0;pointer-events:none;
   background:repeating-conic-gradient(from 0deg at 50% 32%,rgba(255,255,255,.18) 0 9deg,rgba(255,255,255,0) 9deg 20deg);
   animation:doneSpin 70s linear infinite;
+}
+.done-wrap::after{  /* AI 生成庆祝壁纸（低透明度氛围层） */
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url("../images/wallpaper/celebration.jpg") center/cover no-repeat;
+  opacity:.3;
 }
 @keyframes doneSpin{to{transform:rotate(1turn)}}
 .done-trophy,.done-title,.done-sub,.done-emoji-row,.done-actions{position:relative;z-index:1}

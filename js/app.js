@@ -129,10 +129,12 @@ function courseCardHTML(c, i){
       ? `<div class="cc-progress"><span class="cc-stars">⭐ ${got}/${courseTotalStars(c)}</span></div>`
       : `<div class="cc-progress"></div>`;
   return `<button type="button" class="course-card" data-id="${c.id}" style="animation-delay:${i * 80}ms">
-    <div class="cc-emoji">${c.emoji}</div>
-    <div class="cc-title">${c.title}</div>
-    <div class="cc-zh">${c.zhTitle} · ${catLabelOf(c.category)}</div>
-    ${prog}
+    <div class="cc-cover" style="background-image:url('assets/images/cover/${c.id}.jpg')"><span class="cc-emoji">${c.emoji}</span></div>
+    <div class="cc-body">
+      <div class="cc-title">${c.title}</div>
+      <div class="cc-zh">${c.zhTitle} · ${catLabelOf(c.category)}</div>
+      ${prog}
+    </div>
   </button>`;
 }
 

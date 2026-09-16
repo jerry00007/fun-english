@@ -411,3 +411,23 @@ const MODE_STARS = { words:3, flash:1, read:2, talk:2, phonics:2, trace:2, game:
 
 ### 10.7 验收
 `python3 tests/smoke.py [base_url]` 覆盖：站点渲染/chips 回退、14 课×全模式渲染、槽位零重叠、泡泡居中±1.5%、memory 翻配对、SVG 艺术全覆盖、trace、vowel 皮肤、星池封顶、v1→v2 迁移、零 console 错误。
+
+## 11. v2.1 AI 美术资产管线（MiniMax image-01）
+
+### 11.1 词卡美术（替换 SVG 内联方案）
+- 位置 `assets/images/art/<word>.jpg`（15 张：9 动物 + 6 形状，1024²）
+- `js/art.js` 变为文件引用映射：`artFile = name => '<img src="assets/images/art/'+name+'.jpg">'`；ANIMAL_ART/SHAPE_ART 键名不变，data.js/engine 零改动
+- 相对路径 → file:// 离线契约保持；CSS 全局 `img{height:1em;...}` 统一缩放
+- SVG 旧版美术保留在 git 历史（commit af30950），需要时可回滚
+
+### 11.2 课程封面
+- 位置 `assets/images/cover/<courseId>.jpg`（14 张，16:9）
+- `app.js courseCardHTML` 新结构：`.cc-cover`（封面块+圆角出血）+ `.cc-emoji`（右下悬浮 emoji 圆片，-20px 跨界）+ `.cc-body`（标题/进度）
+- `.course-card` 改 padding:0 + overflow:hidden，min-height 196px
+
+### 11.3 通关壁纸
+- `assets/images/wallpaper/celebration.jpg`（3:4）
+- `.done-wrap::after` 低透明度(0.3)氛围层，z-index:0，内容层 z-index:1 不变
+
+### 11.4 再生成流程
+MCP 工具 `text_to_image`（模型 image-01）。注意：并行调用同秒完成会文件名碰撞，必须每次调用用独立 output_directory，生成后改名到目标名。风格模板见 git 历史本节提交信息或 `_tmp` 流程。
