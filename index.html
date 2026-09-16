@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>Fun English · 儿童英语多课件平台</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css?v=23">
+</head>
+<body>
+
+<div id="toast" class="toast hidden"></div>
+
+<!-- ============ 首页 ============ -->
+<section id="home" class="page">
+  <!-- 装饰：太阳 + 两朵飘动的云 -->
+  <div class="sun"></div>
+  <div class="cloud" style="top:12vh;width:120px;height:44px;animation-duration:60s"></div>
+  <div class="cloud" style="top:24vh;width:90px;height:36px;animation-duration:45s;animation-delay:-20s"></div>
+
+  <header class="home-head">
+    <h1 class="home-title"><span class="ch">🌈</span> <span class="ch">F</span><span class="ch">u</span><span class="ch">n</span> <span class="ch">E</span><span class="ch">n</span><span class="ch">g</span><span class="ch">l</span><span class="ch">i</span><span class="ch">s</span><span class="ch">h</span> <span class="ch">·</span> <span class="ch">K</span><span class="ch">i</span><span class="ch">k</span><span class="ch">i</span></h1>
+    <div class="home-sub">Fun English for Kiki · 汤圆的英语乐园 · 点击卡片开始</div>
+    <div class="home-tools">
+      <div class="accent-toggle" id="accentToggle">
+        <button type="button" class="acc-btn" data-accent="us">🇺🇸 US</button>
+        <button type="button" class="acc-btn" data-accent="uk">🇬🇧 UK</button>
+      </div>
+      <div class="total-stars" id="totalStars">⭐ 0</div>
+    </div>
+  </header>
+
+  <div id="continueBox" class="continue-box hidden"></div>
+  <nav class="chip-row" id="chipRow"></nav>
+  <div class="course-grid" id="courseGrid"></div>
+  <footer class="home-foot">Made with ❤️ for Kiki · 家长提示：右上角切换美音/英音</footer>
+</section>
+
+<!-- ============ 数独页 ============ -->
+<section id="sudokuPage" class="page hidden">
+  <div id="sudokuBoard"></div>
+</section>
+
+<!-- ============ 课程页 ============ -->
+<section id="course" class="page hidden">
+  <div class="stars" id="starBar">
+    <span class="star-icons" id="starIcons"></span>
+    <span id="starCount">0/0</span>
+  </div>
+  <div class="topbar">
+    <button type="button" class="home-btn" id="homeBtn">🏠</button>
+    <div class="mode-tabs" id="modeTabs"></div>
+    <div class="accent-toggle small" id="accentToggleCourse">
+      <button type="button" class="acc-btn" data-accent="us">🇺🇸</button>
+      <button type="button" class="acc-btn" data-accent="uk">🇬🇧</button>
+    </div>
+  </div>
+  <main class="mode-container" id="modeContainer"></main>
+</section>
+
+<script src="assets/audio/manifest.js?v=23"></script>
+<script src="js/art.js?v=23"></script>
+<script src="js/data.js?v=23"></script>
+<script src="js/voice.js?v=23"></script>
+<script src="js/engine.js?v=23"></script>
+<script src="js/sudoku.js?v=23"></script>
+<script src="js/app.js?v=23"></script>
+</body>
+</html>
